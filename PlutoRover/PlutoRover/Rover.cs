@@ -18,6 +18,10 @@ namespace PlutoRover
             {
                 y += 1;
             }
+            if (Direction == "N" && command == "B")
+            {
+                y -= 1;
+            }
         }
 
         public Rover()
