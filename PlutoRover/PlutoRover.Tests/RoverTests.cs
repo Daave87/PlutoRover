@@ -5,110 +5,24 @@ namespace PlutoRover.Tests
     [TestFixture]
     public class RoverTests
     {
-        [Test]
-        public void ForwardCommandWhenFacingNorthIncreasesYByOne()
+        [TestCase(0, 0, "N", "F", 0, 1, "N")]
+        [TestCase(0, 0, "N", "FF", 0, 2, "N")]
+        [TestCase(0, 0, "N", "B", 0, -1, "N")]
+        [TestCase(0, 0, "S", "B", 0, 1, "S")]
+        [TestCase(0, 0, "N", "L", 0, 0, "W")]
+        [TestCase(0, 0, "N", "R", 0, 0, "E")]
+        public void RoverImplementsCommandsCorrectly(int x, int y, string direction, string command, int xFinal, int yFinal, string directionFinal)
         {
             //arrange
-            var rover = new Rover();
+            var rover = new Rover(x, y, direction);
 
             //act
-            rover.Go("F");
+            rover.Go(command);
 
             //assert
-            Assert.That(rover.X == 0);
-            Assert.That(rover.Y == 1);
-            Assert.That(rover.Direction == "N");
-        }
-        
-        [Test]
-        public void ForwardCommandTwiceWhenFacingNorthIncreasesYByTwo()
-        {
-            //arrange
-            var rover = new Rover();
-
-            //act
-            rover.Go("F");
-            rover.Go("F");
-            
-            //assert
-            Assert.That(rover.X == 0);
-            Assert.That(rover.Y == 2);
-            Assert.That(rover.Direction == "N");
-        }
-
-        [Test]
-        public void BackwardsCommandTwiceWhenFacingNorthDecreasesYByOne()
-        {
-            //arrange
-            var rover = new Rover();
-
-            //act
-            rover.Go("B");
-
-            //assert
-            Assert.That(rover.X == 0);
-            Assert.That(rover.Y == -1);
-            Assert.That(rover.Direction == "N");
-        }
-
-        [Test]
-        public void BackwardsCommandWhenFacingSouthIncreasesYByOne()
-        {
-            //arrange
-            var rover = new Rover(0, 0, "S");
-
-            //act
-            rover.Go("B");
-
-            //assert
-            Assert.That(rover.X == 0);
-            Assert.That(rover.Y == 1);
-            Assert.That(rover.Direction == "S");
-        }
-
-        [Test]
-        public void LeftCommandWhenFacingNorthMakesDirectionEqualWest()
-        {
-            //arrange
-            var rover = new Rover();
-
-            //act
-            rover.Go("L");
-
-            //assert
-            Assert.That(rover.X == 0);
-            Assert.That(rover.Y == 0);
-            Assert.That(rover.Direction == "W");
-        }
-
-        [Test]
-        public void RightCommandWhenFacingNorthMakesDirectionEqualEast()
-        {
-            //arrange
-            var rover = new Rover();
-
-            //act
-            rover.Go("R");
-
-            //assert
-            Assert.That(rover.X == 0);
-            Assert.That(rover.Y == 0);
-            Assert.That(rover.Direction == "E");
-        }
-
-        [Test]
-        public void MultipleCommandsCanBeExecutedAtOne()
-        {
-            //arrange
-            var rover = new Rover();
-
-            //act
-            rover.Go("FF");
-
-            //assert
-            Assert.That(rover.X == 0);
-            Assert.That(rover.Y == 2);
-            Assert.That(rover.Direction == "N");
+            Assert.That(rover.X == xFinal);
+            Assert.That(rover.Y == yFinal);
+            Assert.That(rover.Direction == directionFinal);
         }
     }
 }
