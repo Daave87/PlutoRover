@@ -32,6 +32,10 @@ namespace PlutoRover
             }
             if (command == "L" && Direction == "N")
             {
+                Direction = "W";
+            }
+            if (command == "R" && Direction == "N")
+            {
                 Direction = "E";
             }
         }

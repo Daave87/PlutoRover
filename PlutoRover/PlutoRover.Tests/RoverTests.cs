@@ -67,13 +67,28 @@ namespace PlutoRover.Tests
         }
 
         [Test]
-        public void LeftCommandWhenFacingNorthMakesDirectionEqualEast()
+        public void LeftCommandWhenFacingNorthMakesDirectionEqualWest()
         {
             //arrange
             var rover = new Rover();
 
             //act
             rover.Go("L");
+
+            //assert
+            Assert.That(rover.x == 0);
+            Assert.That(rover.y == 0);
+            Assert.That(rover.Direction == "W");
+        }
+
+        [Test]
+        public void RightCommandWhenFacingNorthMakesDirectionEqualEast()
+        {
+            //arrange
+            var rover = new Rover();
+
+            //act
+            rover.Go("R");
 
             //assert
             Assert.That(rover.x == 0);
