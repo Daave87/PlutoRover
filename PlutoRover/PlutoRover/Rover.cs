@@ -22,6 +22,14 @@ namespace PlutoRover
             {
                 y -= 1;
             }
+            if (Direction == "S" && command == "F")
+            {
+                y -= 1;
+            }
+            if (Direction == "S" && command == "B")
+            {
+                y += 1;
+            }
         }
 
         public Rover()
@@ -29,6 +37,13 @@ namespace PlutoRover
             x = 0;
             y = 0;
             Direction = "N";
+        }
+        
+        public Rover(int xStart, int yStart, string directionStart)
+        {
+            x = xStart;
+            y = yStart;
+            Direction = directionStart;
         }
     }
 }

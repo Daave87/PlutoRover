@@ -50,5 +50,20 @@ namespace PlutoRover.Tests
             Assert.That(rover.y == -1);
             Assert.That(rover.Direction == "N");
         }
+
+        [Test]
+        public void BackwardsCommandWhenFacingSouthIncreasesYByOne()
+        {
+            //arrange
+            var rover = new Rover(0, 0, "S");
+
+            //act
+            rover.Go("B");
+
+            //assert
+            Assert.That(rover.x == 0);
+            Assert.That(rover.y == 1);
+            Assert.That(rover.Direction == "S");
+        }
     }
 }
