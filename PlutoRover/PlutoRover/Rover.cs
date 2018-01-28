@@ -30,6 +30,10 @@ namespace PlutoRover
             {
                 y += 1;
             }
+            if (command == "L" && Direction == "N")
+            {
+                Direction = "E";
+            }
         }
 
         public Rover()
