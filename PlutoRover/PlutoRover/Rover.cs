@@ -1,40 +1,43 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace PlutoRover
 {
     public class Rover
     {
-        public int x { get; set; }
-        public int y { get; set; }
+        public int X { get; set; }
+        public int Y { get; set; }
         public string Direction { get; set; }
 
-        public void Go(string command)
+        public void Go(string input)
         {
-            if (Direction == "N" && command == "F")
+            foreach (var c in input)
             {
-                y += 1;
+                ProcessCommand(c);
             }
-            if (Direction == "N" && command == "B")
+        }
+
+        private void ProcessCommand(char command)
+        {
+            if (Direction == "N" && command == 'F')
             {
-                y -= 1;
+                Y += 1;
             }
-            if (Direction == "S" && command == "F")
+            if (Direction == "N" && command == 'B')
             {
-                y -= 1;
+                Y -= 1;
             }
-            if (Direction == "S" && command == "B")
+            if (Direction == "S" && command == 'F')
             {
-                y += 1;
+                Y -= 1;
             }
-            if (command == "L" && Direction == "N")
+            if (Direction == "S" && command == 'B')
+            {
+                Y += 1;
+            }
+            if (command == 'L' && Direction == "N")
             {
                 Direction = "W";
             }
-            if (command == "R" && Direction == "N")
+            if (command == 'R' && Direction == "N")
             {
                 Direction = "E";
             }
@@ -42,15 +45,15 @@ namespace PlutoRover
 
         public Rover()
         {
-            x = 0;
-            y = 0;
+            X = 0;
+            Y = 0;
             Direction = "N";
         }
         
         public Rover(int xStart, int yStart, string directionStart)
         {
-            x = xStart;
-            y = yStart;
+            X = xStart;
+            Y = yStart;
             Direction = directionStart;
         }
     }

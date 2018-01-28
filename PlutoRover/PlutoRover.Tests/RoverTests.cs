@@ -15,8 +15,8 @@ namespace PlutoRover.Tests
             rover.Go("F");
 
             //assert
-            Assert.That(rover.x == 0);
-            Assert.That(rover.y == 1);
+            Assert.That(rover.X == 0);
+            Assert.That(rover.Y == 1);
             Assert.That(rover.Direction == "N");
         }
         
@@ -31,8 +31,8 @@ namespace PlutoRover.Tests
             rover.Go("F");
             
             //assert
-            Assert.That(rover.x == 0);
-            Assert.That(rover.y == 2);
+            Assert.That(rover.X == 0);
+            Assert.That(rover.Y == 2);
             Assert.That(rover.Direction == "N");
         }
 
@@ -46,8 +46,8 @@ namespace PlutoRover.Tests
             rover.Go("B");
 
             //assert
-            Assert.That(rover.x == 0);
-            Assert.That(rover.y == -1);
+            Assert.That(rover.X == 0);
+            Assert.That(rover.Y == -1);
             Assert.That(rover.Direction == "N");
         }
 
@@ -61,8 +61,8 @@ namespace PlutoRover.Tests
             rover.Go("B");
 
             //assert
-            Assert.That(rover.x == 0);
-            Assert.That(rover.y == 1);
+            Assert.That(rover.X == 0);
+            Assert.That(rover.Y == 1);
             Assert.That(rover.Direction == "S");
         }
 
@@ -76,8 +76,8 @@ namespace PlutoRover.Tests
             rover.Go("L");
 
             //assert
-            Assert.That(rover.x == 0);
-            Assert.That(rover.y == 0);
+            Assert.That(rover.X == 0);
+            Assert.That(rover.Y == 0);
             Assert.That(rover.Direction == "W");
         }
 
@@ -91,9 +91,24 @@ namespace PlutoRover.Tests
             rover.Go("R");
 
             //assert
-            Assert.That(rover.x == 0);
-            Assert.That(rover.y == 0);
+            Assert.That(rover.X == 0);
+            Assert.That(rover.Y == 0);
             Assert.That(rover.Direction == "E");
+        }
+
+        [Test]
+        public void MultipleCommandsCanBeExecutedAtOne()
+        {
+            //arrange
+            var rover = new Rover();
+
+            //act
+            rover.Go("FF");
+
+            //assert
+            Assert.That(rover.X == 0);
+            Assert.That(rover.Y == 2);
+            Assert.That(rover.Direction == "N");
         }
     }
 }
