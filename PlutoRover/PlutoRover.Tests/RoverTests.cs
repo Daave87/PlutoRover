@@ -11,6 +11,10 @@ namespace PlutoRover.Tests
         [TestCase(0, 0, "S", "B", 0, 1, "S")]
         [TestCase(0, 0, "N", "L", 0, 0, "W")]
         [TestCase(0, 0, "N", "R", 0, 0, "E")]
+        [TestCase(0, 0, "N", "LL", 0, 0, "S")]
+        [TestCase(0, 0, "N", "RR", 0, 0, "S")]
+        [TestCase(0, 0, "N", "RRRR", 0, 0, "N")]
+        [TestCase(0, 0, "S", "LLLL", 0, 0, "S")]
         public void RoverImplementsCommandsCorrectly(int x, int y, string direction, string command, int xFinal, int yFinal, string directionFinal)
         {
             //arrange

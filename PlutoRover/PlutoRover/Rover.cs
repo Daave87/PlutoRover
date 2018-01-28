@@ -20,26 +20,62 @@ namespace PlutoRover
             if (Direction == "N" && command == 'F')
             {
                 Y += 1;
+                return;
             }
             if (Direction == "N" && command == 'B')
             {
                 Y -= 1;
+                return;
             }
             if (Direction == "S" && command == 'F')
             {
                 Y -= 1;
+                return;
             }
             if (Direction == "S" && command == 'B')
             {
                 Y += 1;
+                return;
             }
-            if (command == 'L' && Direction == "N")
+            if (Direction == "N" && command == 'L')
             {
                 Direction = "W";
+                return;
             }
-            if (command == 'R' && Direction == "N")
+            if (Direction == "W" && command == 'L')
+            {
+                Direction = "S";
+                return;
+            }
+            if (Direction == "S" && command == 'L')
             {
                 Direction = "E";
+                return;
+            }
+            if (Direction == "E" && command == 'L')
+            {
+                Direction = "N";
+                return;
+            }
+            if (Direction == "N" && command == 'R')
+            {
+                Direction = "E";
+                return;
+            }
+            if (Direction == "E" && command == 'R')
+            {
+                Direction = "S";
+                return;
+            }
+            if (Direction == "S" && command == 'R')
+            {
+                Direction = "W";
+                return;
+            }
+            if (Direction == "W" && command == 'R')
+            {
+                Direction = "N";
+                return;
             }
         }
 
