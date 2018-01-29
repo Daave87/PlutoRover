@@ -57,68 +57,72 @@ namespace PlutoRover
             switch (Direction)
             {
                 case "N":
-                    Y += 1;
-                    if (Y >= _gridSize)
-                    {
-                        Y = 0;
-                    }
+                    GoNorth();
                     break;
                 case "E":
-                    X += 1;
-                    if (X >= _gridSize)
-                    {
-                        X = 0;
-                    }
+                    GoEast();
                     break;
                 case "S":
-                    Y -= 1;
-                    if (Y < 0)
-                    {
-                        Y = _gridSize - 1;
-                    }
+                    GoSouth();
                     break;
                 case "W":
-                    X -= 1;
-                    if (X < 0)
-                    {
-                        X = _gridSize -1;
-                    }
+                    GoWest();
                     break;
             }
         }
-
+        
         private void GoBackwards()
         {
             switch (Direction)
             {
                 case "N":
-                    Y -= 1;
-                    if (Y < 0)
-                    {
-                        Y = _gridSize -1;
-                    }
+                    GoSouth();
                     break;
                 case "E":
-                    X -= 1;
-                    if (X < 0)
-                    {
-                        X = _gridSize -1;
-                    }
+                    GoWest();
                     break;
                 case "S":
-                    Y += 1;
-                    if (Y >= _gridSize)
-                    {
-                        Y = 0;
-                    }
+                    GoNorth();
                     break;
                 case "W":
-                    X += 1;
-                    if (X >= _gridSize)
-                    {
-                        X = 0;
-                    }
+                    GoEast();
                     break;
+            }
+        }
+
+        private void GoWest()
+        {
+            X -= 1;
+            if (X < 0)
+            {
+                X = _gridSize - 1;
+            }
+        }
+
+        private void GoSouth()
+        {
+            Y -= 1;
+            if (Y < 0)
+            {
+                Y = _gridSize - 1;
+            }
+        }
+
+        private void GoEast()
+        {
+            X += 1;
+            if (X >= _gridSize)
+            {
+                X = 0;
+            }
+        }
+
+        private void GoNorth()
+        {
+            Y += 1;
+            if (Y >= _gridSize)
+            {
+                Y = 0;
             }
         }
 
