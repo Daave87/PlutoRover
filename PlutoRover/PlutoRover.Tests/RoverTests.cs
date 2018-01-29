@@ -36,12 +36,15 @@ namespace PlutoRover.Tests
 
         [TestCase(0, 0, "N", "F", 0, 0, "N", true)]
         [TestCase(0, 0, "E", "F", 1, 0, "E", false)]
-        [TestCase(0, 0, "N", "FRF", 0, 0, "N", true)]
+        [TestCase(0, 0, "N", "B", 0, 0, "N", true)]
+        [TestCase(0, 0, "W", "F", 0, 0, "W", true)]
         public void RoverReportsEncounteredObstaclesAndStops(int x, int y, string direction, string command, int xFinal, int yFinal, string directionFinal, bool encounteredObstacle)
         {
             var obstacles = new List<Tuple<int, int>>
             {
-                new Tuple<int, int>(0, 1)
+                new Tuple<int, int>(0, 1),
+                new Tuple<int, int>(0, 99),
+                new Tuple<int, int>(99, 0)
             };
 
             //arrange

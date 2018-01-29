@@ -118,6 +118,12 @@ namespace PlutoRover
             {
                 X = _gridSize - 1;
             }
+
+            if (_obstacles.Any(x => x.Item1 == X && x.Item2 == Y))
+            {
+                GoEast();
+                EncounteredObstacle = true;
+            }
         }
 
         private void GoSouth()
@@ -141,6 +147,12 @@ namespace PlutoRover
             if (X >= _gridSize)
             {
                 X = 0;
+            }
+
+            if (_obstacles.Any(x => x.Item1 == X && x.Item2 == Y))
+            {
+                GoWest();
+                EncounteredObstacle = true;
             }
         }
 
