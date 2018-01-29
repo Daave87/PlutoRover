@@ -14,7 +14,7 @@ namespace PlutoRover
         public bool EncounteredObstacle = false;
 
         private readonly int _gridSize;
-        private List<Tuple<int, int>>  _obstacles;
+        private readonly List<Tuple<int, int>>  _obstacles;
 
         public Rover(int gridSize)
         {
