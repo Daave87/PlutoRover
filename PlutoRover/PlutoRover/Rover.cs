@@ -1,4 +1,8 @@
 ﻿
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
 namespace PlutoRover
 {
     public class Rover
@@ -7,7 +11,10 @@ namespace PlutoRover
         public int Y { get; set; }
         public string Direction { get; set; }
 
-        private int _gridSize;
+        public bool EncounteredObstacle = false;
+
+        private readonly int _gridSize;
+        private List<Tuple<int, int>>  _obstacles;
 
         public Rover(int gridSize)
         {
@@ -15,6 +22,7 @@ namespace PlutoRover
             X = 0;
             Y = 0;
             Direction = "N";
+            _obstacles = new List<Tuple<int, int>>();
         }
 
         public Rover(int xStart, int yStart, string directionStart, int gridSize)
@@ -23,6 +31,16 @@ namespace PlutoRover
             Y = yStart;
             Direction = directionStart;
             _gridSize = gridSize;
+            _obstacles = new List<Tuple<int, int>>();
+        }
+
+        public Rover(int xStart, int yStart, string directionStart, int gridSize, List<Tuple<int,int>> obstacles)
+        {
+            X = xStart;
+            Y = yStart;
+            Direction = directionStart;
+            _gridSize = gridSize;
+            _obstacles = obstacles;
         }
 
         public void Go(string input)
@@ -123,6 +141,12 @@ namespace PlutoRover
             if (Y >= _gridSize)
             {
                 Y = 0;
+            }
+
+            if (_obstacles.Any(x => x.Item1 == X && x.Item2 == Y))
+            {
+                GoSouth();
+                EncounteredObstacle = true;
             }
         }
 

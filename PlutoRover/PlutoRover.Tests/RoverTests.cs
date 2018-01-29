@@ -1,4 +1,6 @@
-﻿using NUnit.Framework;
+﻿using System;
+using System.Collections.Generic;
+using NUnit.Framework;
 
 namespace PlutoRover.Tests
 {
@@ -30,6 +32,27 @@ namespace PlutoRover.Tests
             Assert.That(rover.X == xFinal);
             Assert.That(rover.Y == yFinal);
             Assert.That(rover.Direction == directionFinal);
+        }
+
+        [TestCase(0, 0, "N", "F", 0, 0, "N", true)]
+        public void RoverReportsEncounteredObstaclesAndStops(int x, int y, string direction, string command, int xFinal, int yFinal, string directionFinal, bool encounteredObstacle)
+        {
+            var obstacles = new List<Tuple<int, int>>
+            {
+                new Tuple<int, int>(0, 1)
+            };
+
+            //arrange
+            var rover = new Rover(x, y, direction, 100, obstacles);
+
+            //act
+            rover.Go(command);
+
+            //assert
+            Assert.That(rover.X == xFinal);
+            Assert.That(rover.Y == yFinal);
+            Assert.That(rover.Direction == directionFinal);
+            Assert.That(rover.EncounteredObstacle == encounteredObstacle);
         }
     }
 }
