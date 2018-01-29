@@ -47,7 +47,10 @@ namespace PlutoRover
         {
             foreach (var c in input)
             {
-                ProcessCommand(c);
+                if (!EncounteredObstacle)
+                {
+                    ProcessCommand(c);
+                }
             }
         }
 
@@ -123,6 +126,12 @@ namespace PlutoRover
             if (Y < 0)
             {
                 Y = _gridSize - 1;
+            }
+
+            if (_obstacles.Any(x => x.Item1 == X && x.Item2 == Y))
+            {
+                GoNorth();
+                EncounteredObstacle = true;
             }
         }
 
