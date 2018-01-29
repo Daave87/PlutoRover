@@ -7,6 +7,20 @@ namespace PlutoRover
         public int Y { get; set; }
         public string Direction { get; set; }
 
+        public Rover()
+        {
+            X = 0;
+            Y = 0;
+            Direction = "N";
+        }
+
+        public Rover(int xStart, int yStart, string directionStart)
+        {
+            X = xStart;
+            Y = yStart;
+            Direction = directionStart;
+        }
+
         public void Go(string input)
         {
             foreach (var c in input)
@@ -17,80 +31,97 @@ namespace PlutoRover
 
         private void ProcessCommand(char command)
         {
-            if (Direction == "N" && command == 'F')
+            switch (command)
             {
-                Y += 1;
-                return;
-            }
-            if (Direction == "N" && command == 'B')
-            {
-                Y -= 1;
-                return;
-            }
-            if (Direction == "S" && command == 'F')
-            {
-                Y -= 1;
-                return;
-            }
-            if (Direction == "S" && command == 'B')
-            {
-                Y += 1;
-                return;
-            }
-            if (Direction == "N" && command == 'L')
-            {
-                Direction = "W";
-                return;
-            }
-            if (Direction == "W" && command == 'L')
-            {
-                Direction = "S";
-                return;
-            }
-            if (Direction == "S" && command == 'L')
-            {
-                Direction = "E";
-                return;
-            }
-            if (Direction == "E" && command == 'L')
-            {
-                Direction = "N";
-                return;
-            }
-            if (Direction == "N" && command == 'R')
-            {
-                Direction = "E";
-                return;
-            }
-            if (Direction == "E" && command == 'R')
-            {
-                Direction = "S";
-                return;
-            }
-            if (Direction == "S" && command == 'R')
-            {
-                Direction = "W";
-                return;
-            }
-            if (Direction == "W" && command == 'R')
-            {
-                Direction = "N";
-                return;
+                case 'F':
+                    GoForward();
+                    break;
+                case 'B':
+                    GoBackwards();
+                    break;
+                case 'L':
+                    TurnLeft();
+                    break;
+                case 'R':
+                    TurnRight();
+                    break;
             }
         }
 
-        public Rover()
+        private void GoForward()
         {
-            X = 0;
-            Y = 0;
-            Direction = "N";
+            switch (Direction)
+            {
+                case "N":
+                    Y += 1;
+                    break;
+                case "E":
+                    X += 1;
+                    break;
+                case "S":
+                    Y -= 1;
+                    break;
+                case "W":
+                    X -= 1;
+                    break;
+            }
         }
-        
-        public Rover(int xStart, int yStart, string directionStart)
+
+        private void GoBackwards()
         {
-            X = xStart;
-            Y = yStart;
-            Direction = directionStart;
+            switch (Direction)
+            {
+                case "N":
+                    Y -= 1;
+                    break;
+                case "E":
+                    X -= 1;
+                    break;
+                case "S":
+                    Y += 1;
+                    break;
+                case "W":
+                    X += 1;
+                    break;
+            }
+        }
+
+        private void TurnLeft()
+        {
+            switch (Direction)
+            {
+                case "N":
+                    Direction = "W";
+                    break;
+                case "W":
+                    Direction = "S";
+                    break;
+                case "S":
+                    Direction = "E";
+                    break;
+                case "E":
+                    Direction = "N";
+                    break;
+            }
+        }
+
+        private void TurnRight()
+        {
+            switch (Direction)
+            {
+                case "N":
+                    Direction = "E";
+                    break;
+                case "E":
+                    Direction = "S";
+                    break;
+                case "S":
+                    Direction = "W";
+                    break;
+                case "W":
+                    Direction = "N";
+                    break;
+            }
         }
     }
 }
