@@ -65,12 +65,24 @@ namespace PlutoRover
                     break;
                 case "E":
                     X += 1;
+                    if (X >= _gridSize)
+                    {
+                        X = 0;
+                    }
                     break;
                 case "S":
                     Y -= 1;
+                    if (Y < 0)
+                    {
+                        Y = _gridSize - 1;
+                    }
                     break;
                 case "W":
                     X -= 1;
+                    if (X < 0)
+                    {
+                        X = _gridSize -1;
+                    }
                     break;
             }
         }
@@ -81,15 +93,31 @@ namespace PlutoRover
             {
                 case "N":
                     Y -= 1;
+                    if (Y < 0)
+                    {
+                        Y = _gridSize -1;
+                    }
                     break;
                 case "E":
                     X -= 1;
+                    if (X < 0)
+                    {
+                        X = _gridSize -1;
+                    }
                     break;
                 case "S":
                     Y += 1;
+                    if (Y >= _gridSize)
+                    {
+                        Y = 0;
+                    }
                     break;
                 case "W":
                     X += 1;
+                    if (X >= _gridSize)
+                    {
+                        X = 0;
+                    }
                     break;
             }
         }
