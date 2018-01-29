@@ -7,18 +7,22 @@ namespace PlutoRover
         public int Y { get; set; }
         public string Direction { get; set; }
 
-        public Rover()
+        private int _gridSize;
+
+        public Rover(int gridSize)
         {
+            _gridSize = gridSize;
             X = 0;
             Y = 0;
             Direction = "N";
         }
 
-        public Rover(int xStart, int yStart, string directionStart)
+        public Rover(int xStart, int yStart, string directionStart, int gridSize)
         {
             X = xStart;
             Y = yStart;
             Direction = directionStart;
+            _gridSize = gridSize;
         }
 
         public void Go(string input)
@@ -54,6 +58,10 @@ namespace PlutoRover
             {
                 case "N":
                     Y += 1;
+                    if (Y >= _gridSize)
+                    {
+                        Y = 0;
+                    }
                     break;
                 case "E":
                     X += 1;

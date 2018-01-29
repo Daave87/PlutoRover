@@ -15,10 +15,11 @@ namespace PlutoRover.Tests
         [TestCase(0, 0, "N", "RR", 0, 0, "S")]
         [TestCase(0, 0, "N", "RRRR", 0, 0, "N")]
         [TestCase(0, 0, "S", "LLLL", 0, 0, "S")]
+        [TestCase(0, 99, "N", "F", 0, 0, "N")]
         public void RoverImplementsCommandsCorrectly(int x, int y, string direction, string command, int xFinal, int yFinal, string directionFinal)
         {
             //arrange
-            var rover = new Rover(x, y, direction);
+            var rover = new Rover(x, y, direction, 100);
 
             //act
             rover.Go(command);
