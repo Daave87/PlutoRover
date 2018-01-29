@@ -119,13 +119,13 @@ namespace PlutoRover
                 X = _gridSize - 1;
             }
 
-            if (_obstacles.Any(x => x.Item1 == X && x.Item2 == Y))
+            if (ObstacleAtLocation())
             {
                 GoEast();
                 EncounteredObstacle = true;
             }
         }
-
+        
         private void GoSouth()
         {
             Y -= 1;
@@ -134,7 +134,7 @@ namespace PlutoRover
                 Y = _gridSize - 1;
             }
 
-            if (_obstacles.Any(x => x.Item1 == X && x.Item2 == Y))
+            if (ObstacleAtLocation())
             {
                 GoNorth();
                 EncounteredObstacle = true;
@@ -149,7 +149,7 @@ namespace PlutoRover
                 X = 0;
             }
 
-            if (_obstacles.Any(x => x.Item1 == X && x.Item2 == Y))
+            if (ObstacleAtLocation())
             {
                 GoWest();
                 EncounteredObstacle = true;
@@ -164,11 +164,16 @@ namespace PlutoRover
                 Y = 0;
             }
 
-            if (_obstacles.Any(x => x.Item1 == X && x.Item2 == Y))
+            if (ObstacleAtLocation())
             {
                 GoSouth();
                 EncounteredObstacle = true;
             }
+        }
+
+        private bool ObstacleAtLocation()
+        {
+            return _obstacles.Any(x => x.Item1 == X && x.Item2 == Y);
         }
 
         private void TurnLeft()
