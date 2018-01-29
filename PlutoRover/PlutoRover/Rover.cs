@@ -11,7 +11,7 @@ namespace PlutoRover
         public int Y { get; set; }
         public string Direction { get; set; }
 
-        public bool EncounteredObstacle = false;
+        public bool EncounteredObstacle;
 
         private readonly int _gridSize;
         private readonly List<Tuple<int, int>>  _obstacles;
